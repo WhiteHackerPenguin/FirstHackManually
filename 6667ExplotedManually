@@ -15,7 +15,7 @@
 ┌──(root㉿kali)-[/home/kali/Desktop/UnrealIRCd-3.2.8.1-Backdoor]
 └─# nano exploit.py
 
-#Change local IP and port 
+#Change local IP and port (in this case, 443)
 
 ┌──(root㉿kali)-[/home/kali/Desktop/UnrealIRCd-3.2.8.1-Backdoor]
 └─# chmod +x exploit.py
